@@ -513,7 +513,7 @@ static int wm8960_add_widgets(struct snd_soc_component *component)
 		if (strcmp(w->name, "OUT3 VMID") == 0)
 			wm8960->out3 = w;
 	}
-	
+
 	return 0;
 }
 
@@ -603,150 +603,150 @@ static const int bclk_divs[] = {
 	120, 160, 220, 240, 320, 320, 320
 };
 
-   
-																			
-									   
-									 
-									
-									 
-  
-															 
-															 
-														  
-  
-										  
-									
-												  
-										   
-											
-  
-		   
-												   
-																
-												   
-   
-	  
-																 
-													
- 
-						 
-			 
-						  
 
-						  
-				
 
-					 
-					   
 
-												  
-												
-						   
-			
-								 
-											  
-									 
-			 
-												
-											 
-					
-					 
-				  
-				   
-		   
-	 
-									 
-					 
-				  
-				   
-					
-	 
-	
-								  
-		  
-   
-								
-		 
-  
-				  
- 
 
-   
-																		  
-												  
-									
-										
-									
-  
-															  
-															  
-														   
-  
-								  
-															
-												  
-										   
-											
-  
-		   
-														
-																	  
-												   
-   
-	  
-																		  
-												 
- 
-																	   
-								   
-								  
-			 
 
-					 
-					   
-				   
 
-						 
-										 
 
-												
-						   
-			
-											  
-								
-									  
 
-												
-												  
-			  
 
-											 
-					
-					 
-				  
-				   
-					 
-	 
-									 
-					 
-				  
-				   
-					
-							  
-	 
-	
-   
-  
 
-					  
- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 static int wm8960_configure_clocking(struct snd_soc_component *component)
 {
 	struct wm8960_priv *wm8960 = snd_soc_component_get_drvdata(component);
 	int sysclk, bclk, lrclk, freq_out, freq_in;
 	u16 iface1 = snd_soc_component_read(component, WM8960_IFACE1);
 	int i, j, k;
-		 
+
 
 	if (!(iface1 & (1<<6))) {
 		dev_dbg(component->dev,
@@ -837,7 +837,7 @@ static int wm8960_configure_clocking(struct snd_soc_component *component)
 		dev_err(component->dev, "failed to configure clock\n");
 		return -EINVAL;
 	}
-											  
+
 
 configure_clock:
 	/* configure sysclk clock */
@@ -1440,8 +1440,10 @@ static void wm8960_set_pdata_from_of(struct i2c_client *i2c,
 		pdata->shared_lrclk = true;
 }
 
-static int wm8960_i2c_probe(struct i2c_client *i2c)
+static int wm8960_i2c_probe(struct i2c_client *i2c, const struct i2c_device_id *i2c_id)
 {
+    (void)i2c_id;
+
 	struct wm8960_data *pdata = dev_get_platdata(&i2c->dev);
 	struct wm8960_priv *wm8960;
 	int ret;

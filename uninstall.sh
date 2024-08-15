@@ -5,17 +5,7 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
-is_Raspberry=$(cat /proc/device-tree/model | awk  '{print $1}')
-if [ "x${is_Raspberry}" != "xRaspberry" ] ; then
-  echo "Sorry, this drivers only works on raspberry pi"
-  exit 1
-fi
-
 uname_r=$(uname -r)
-
-echo "remove dtbos"
-rm  /boot/overlays/wm8960-soundcard.dtbo || true
-sed -i '/dtoverlay=wm8960-soundcard/d' /boot/config.txt
 
 echo "remove alsa configs"
 rm -rf  /etc/wm8960-soundcard/ || true
